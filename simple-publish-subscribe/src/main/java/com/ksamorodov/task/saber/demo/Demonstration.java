@@ -6,8 +6,7 @@ import com.ksamorodov.task.saber.strategy.PublishingStrategy;
 import com.ksamorodov.task.saber.strategy.impl.BatchingStrategy;
 import com.ksamorodov.task.saber.strategy.impl.BroadcastStrategy;
 import com.ksamorodov.task.saber.strategy.impl.RoundRobinStrategy;
-import com.ksamorodov.task.saber.subscribers.Subscriber1;
-import com.ksamorodov.task.saber.subscribers.Subscriber2;
+import com.ksamorodov.task.saber.subscribers.Subscriber;
 
 import java.util.concurrent.Flow;
 
@@ -24,16 +23,16 @@ public class Demonstration {
         Publisher<String> publisher = new Publisher<>(strategy);
 
         // создаем двух подписчиков
-        Flow.Subscriber<String> subscriber1 = new Subscriber1();
+        Flow.Subscriber<String> subscriber1 = new Subscriber("Kirill");
 
-        Flow.Subscriber<String> subscriber2 = new Subscriber2();
+        Flow.Subscriber<String> subscriber2 = new Subscriber("Eliza");
 
         // подписываем подписчиков на издателя
         publisher.subscribe(subscriber1);
         publisher.subscribe(subscriber2);
 
         // публикуем элементы
-        publisher.publish("item 1");
-        publisher.publish("item 2");
+        publisher.publish("iPhone");
+        publisher.publish("MacBook");
     }
 }
