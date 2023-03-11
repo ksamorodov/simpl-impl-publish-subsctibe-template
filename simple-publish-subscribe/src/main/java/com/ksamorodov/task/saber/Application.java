@@ -1,31 +1,23 @@
 package com.ksamorodov.task.saber;
 
-import com.ksamorodov.task.saber.publisher.Publisher;
-import com.ksamorodov.task.saber.strategy.PublishingStrategy;
-import com.ksamorodov.task.saber.strategy.impl.BroadcastStrategy;
-import com.ksamorodov.task.saber.subscribers.Subscriber1;
-import com.ksamorodov.task.saber.subscribers.Subscriber2;
-
-import java.util.concurrent.Flow;
+import com.ksamorodov.task.saber.demo.Demonstration;
+import com.ksamorodov.task.saber.enums.StrategyKind;
 
 public class Application {
     public static void main(String[] args) {
+        StrategyKind strategyKind = null;
+        int batchSize = 0;
+        if (args.length == 1) {
+            strategyKind = StrategyKind.valueOf(args[0]);
+        } else if (args.length == 2) {
+            strategyKind = StrategyKind.valueOf(args[0]);
+            batchSize = Integer.parseInt(args[1]);
+        } else {
+            System.err.println("Usage: java Application [strategy] [batch-size](Optional)");
+            System.exit(1);
+        }
 
-        PublishingStrategy<String> broadcastStrategy = new BroadcastStrategy<>();
-        Publisher<String> publisher = new Publisher<>(broadcastStrategy);
-
-        // создаем двух подписчиков
-        Flow.Subscriber<String> subscriber1 = new Subscriber1();
-
-        Flow.Subscriber<String> subscriber2 = new Subscriber2();
-
-        // подписываем подписчиков на издателя
-        publisher.subscribe(subscriber1);
-        publisher.subscribe(subscriber2);
-
-        // публикуем элементы
-        publisher.publish("item 1");
-        publisher.publish("item 2");
+        Demonstration.start(strategyKind, batchSize);
 
     }
 }
