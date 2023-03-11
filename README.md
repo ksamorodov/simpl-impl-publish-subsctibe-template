@@ -1,21 +1,35 @@
-# Пример реализации паттерна Publish-Subscribe с использованием Java Flow API
+This is a simple implementation of the Publish-Subscribe pattern using the Java Flow API. It includes different publishing strategies to handle slow consumers.
 
-Данный пример демонстрирует реализацию паттерна `Publish-Subscribe` с использованием Java Flow API. Он состоит из двух классов: `com.ksamorodov.saber.test.service.PubSubWithSlowConsumers` и `SlowSubscriber`.
+## How to run
 
-## com.ksamorodov.saber.test.service.PubSubWithSlowConsumers
+To run the application, use the following command:
+```
+java Application [strategy] [batch-size](Optional)
+```
 
-Этот класс инициализирует `SubmissionPublisher` и двух `SlowSubscriber`, и подписывает их на этот издатель. Он отправляет 10 сообщений в очередь пакетами по одному сообщению, когда размер очереди не превышает установленный максимум (3 элемента). После того, как все сообщения отправлены, он закрывает издатель.
+`strategy`: the publishing strategy to use. It can be `BROADCAST`, `BATCHING` or `ROUND_ROBIN`.
+`batch-size`: the number of items to batch together when using the batching strategy.
 
-## SlowSubscriber
+For example, to run application with `BROADCAST` strategy, use the following command:
+```
+java Application BROADCAST
+```
 
-Этот класс реализует интерфейс `Flow.Subscriber` и реагирует на события, связанные с получением новых элементов издателем. Он имитирует долгую обработку элементов, задерживая поток на 100 миллисекунд после получения каждого элемента.
+## Implementation details
+Application implements PublishSubscriber pattern with different publishing strategies to handle slow consumers.
+The choice of strategy occurs through the design pattern strategy
 
-## Рекомендации
+## Example usage
 
-В целях оптимизации производительности и улучшения обработки элементов подписчиками, можно изменить стратегию паблишера. Например, можно отправлять элементы в очередь пакетами, вместо отправки каждого элемента отдельно. Также можно настроить количество элементов, которые отправляются в каждый пакет, и максимальный размер очереди.
+To run the demonstration with the broadcast strategy, use the following command:
 
-Кроме того, можно добавить другие типы подписчиков, которые обрабатывают элементы быстрее или медленнее, чем SlowSubscriber.
+```
+java Application BROADCAST
+```
 
-## Заключение
+To run the demonstration with the batching strategy and a batch size of 3, use the following command:
+```
+java Application BATCHING 3
+```
 
-Пример реализации паттерна Publish-Subscribe с использованием Java Flow API демонстрирует, как можно создавать простые системы обмена сообщениями между издателем и подписчиками, используя принципы асинхронного программирования и реактивного программирования. Эти принципы помогают создавать масштабируемые, отказоустойчивые и высокопроизводительные системы.
+
