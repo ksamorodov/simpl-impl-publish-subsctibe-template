@@ -1,8 +1,8 @@
 package com.ksamorodov.task.saber.publisher;
 
 import com.ksamorodov.task.saber.strategy.impl.BroadcastStrategy;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -21,7 +21,7 @@ public class PublisherTest {
 
     private Publisher<String> publisher;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         strategy = new BroadcastStrategy<>();
         publisher = new Publisher<>(strategy);
