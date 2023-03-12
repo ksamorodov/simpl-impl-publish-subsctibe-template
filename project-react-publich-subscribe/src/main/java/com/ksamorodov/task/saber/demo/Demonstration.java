@@ -12,6 +12,7 @@ import java.util.concurrent.Flow;
  * и подписчиками Subscriber.
  */
 public class Demonstration {
+
     /**
      * Метод start запускает демонстрацию работы паблишера с определенной стратегией и размером пакета.
      * @param strategy - выбранная стратегия паблишера
@@ -31,8 +32,5 @@ public class Demonstration {
         publisher.subscribe(subscriber2);
         publisher.subscribe(subscriber3);
 
-//        // публикуем элементы
-//        publisher.publish("iPhone");
-//        publisher.publish("MacBook");
     }
 }

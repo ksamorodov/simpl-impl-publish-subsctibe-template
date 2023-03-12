@@ -1,7 +1,6 @@
 package com.ksamorodov.task.saber;
 
 import com.ksamorodov.task.saber.demo.Demonstration;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 
 public class Application {
