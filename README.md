@@ -1,35 +1,31 @@
-This is a simple implementation of the Publish-Subscribe pattern using the Java Flow API. It includes different publishing strategies to handle slow consumers.
+# Saber Test Task
 
-## How to run
+This test task is comprised of two parts, each implementing a simple version of the Publish-Subscribe pattern using Java Flow API and Project Reactor. The goal of the implementation is to provide flexibility in handling slow consumers by allowing the user to select the desired publisher strategy.
 
-To run the application, use the following command:
-```
-java Application [strategy] [batch-size](Optional)
-```
+## Implementation Details
+
+The test task is split into two modules: simple-publish-subscribe for the first part and project-react-publich-subscribe for the second part.
+
+### Simple Publish-Subscribe
+To run the first part, use the following command:
+
+ ```
+ java Application [strategy] [batch-size](Optional)
+ ```
 
 `strategy`: the publishing strategy to use. It can be `BROADCAST`, `BATCHING` or `ROUND_ROBIN`.
 `batch-size`: the number of items to batch together when using the batching strategy.
 
-For example, to run application with `BROADCAST` strategy, use the following command:
-```
-java Application BROADCAST
-```
-
-## Implementation details
-Application implements PublishSubscriber pattern with different publishing strategies to handle slow consumers.
-The choice of strategy occurs through the design pattern strategy
-
-## Example usage
-
-To run the demonstration with the broadcast strategy, use the following command:
+For example, to run the application with BROADCAST strategy, use the following command:
 
 ```
-java Application BROADCAST
+java Application [strategy]
 ```
 
-To run the demonstration with the batching strategy and a batch size of 3, use the following command:
-```
-java Application BATCHING 3
-```
+`strategy`: the publishing strategy to use. It can be: `IGNORE`, `ERROR`, `DROP`, `LATEST`, `BUFFER`;
 
+The application requires Java 14 or higher to run.
 
+## Conclusion
+
+The implementation of the Publish-Subscribe pattern using Java Flow API and Project Reactor provides flexibility in handling slow consumers. By allowing users to select the desired publisher strategy, it ensures that subscribers receive data in a timely and efficient manner. The use of Mockito tests helps ensure the correctness of the implementation.
