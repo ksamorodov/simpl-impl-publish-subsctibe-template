@@ -50,7 +50,7 @@ public class Publisher implements Flow.Publisher {
      * Внутренний класс, реализующий интерфейс Flow.Subscription.
      * Используется для управления подписками подписчиков.
      */
-    private class SubscriptionImpl implements Flow.Subscription {
+    class SubscriptionImpl implements Flow.Subscription {
 
         private final FluxSink emitter;
 
