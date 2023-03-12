@@ -24,23 +24,5 @@ public class Application {
 
         // Запускаем демонстрацию с заданными параметрами
         Demonstration.start(strategyKind);
-//
-//            Flux<String> flux = Flux.create(emitter -> {
-//                emitter.next("Hello");
-//                emitter.next("World");
-//                emitter.complete();
-//            });
-//
-//            flux.subscribe(System.out::println);
-//
-//        Flux<String> sink = Flux.create(emitter -> {
-//                emitter.next("This");
-//                emitter.next("is");
-//                emitter.next("a");
-//                emitter.next("test");
-//                emitter.complete();
-//        });
-//
-//        sink.subscribe(System.out::println);
     }
 }
