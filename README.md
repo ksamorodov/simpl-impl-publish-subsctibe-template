@@ -16,7 +16,7 @@ To run the first part, use the following command:
 `strategy`: the publishing strategy to use. It can be `BROADCAST`, `BATCHING` or `ROUND_ROBIN`.
 `batch-size`: the number of items to batch together when using the batching strategy.
 
-For example, to run the application with BROADCAST strategy, use the following command:
+To run the second part, use the following command:
 
 ```
 java Application [strategy]
